@@ -1,0 +1,7 @@
+name: "Varbase Dashboards"
+description: "Provides a preset of Dashboards for users roles."
+type: module
+core_version_requirement: ^9 || ^10
+package: Varbase
+dependencies:
+  - dashboards:dashboards
