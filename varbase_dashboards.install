@@ -18,15 +18,10 @@ function varbase_dashboards_install() {
   ModuleInstallerFactory::installList('varbase_dashboards');
 
   // Create a path alias for /dashboard/dashboard to work as /admin/dashboard.
-  $alias_manager = \Drupal::service('path_alias.manager');
-  $default_dashboard_path = $alias_manager->getPathByAlias('/admin/dashboard');
-
-  if (empty($default_dashboard_path)) {
-    $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
-      'path' => '/dashboard/dashboard',
-      'alias' => '/admin/dashboard',
-      'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-    ]);
-    $path_alias->save();
-  }
+  $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
+    'path' => '/dashboard/dashboard',
+    'alias' => '/admin/dashboard',
+    'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+  ]);
+  $path_alias->save();
 }
