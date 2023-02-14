@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * {@inheritdoc}
+ */
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function varbase_dashboards_page_attachments(array &$attachments) {
+  $routers = [
+    'entity.dashboard.canonical',
+    'layout_builder.dashboards.view',
+    'layout_builder.dashboards_override.view',
+  ];
+
+  if (in_array(\Drupal::routeMatch()->getRouteName(), $routers)) {
+    // Attach our extra CSS for Varbase dashboard.
+    $attachments['#attached']['library'][] = 'varbase_dashboards/style';
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function varbase_dashboards_theme($existing, $type, $theme, $path) {
+  return [
+    'block__varbase_dashboard_user' => [
+      'base hook' => 'block',
+    ],
+  ];
+}

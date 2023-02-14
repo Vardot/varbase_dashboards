@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Varbase Dashboards module.
+ */
+
+use Vardot\Installer\ModuleInstallerFactory;
+
+/**
+ * Implements hook_install().
+ */
+function varbase_dashboards_install() {
+
+  // Processor for install: in varbase_dashboards.info.yml file using ModuleInstallerFactory.
+  // --------------------------------------------------------------------------.
+  ModuleInstallerFactory::installList('varbase_dashboards');
+
+  $alias_manager = \Drupal::service('path_alias.manager');
+  $alias = $alias_manager::create([
+    'path' => '/dashboard/dashboard',
+    'alias' => '/admin/dashboard',
+  ]);
+  $alias->save();
+}
