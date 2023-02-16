@@ -19,12 +19,12 @@ sections:
         region: one
         configuration:
           id: varbase_dashboard_user
-          label: 'Varbase Dashboard User'
-          label_display: visible
+          label: Dashboard
+          label_display: '0'
           provider: varbase_dashboards
           context_mapping: {  }
         weight: 0
-        additional: {  }
+        additional: { }
       adbc6297-1ec2-4f2b-a0b9-2c7440a61959:
         uuid: adbc6297-1ec2-4f2b-a0b9-2c7440a61959
         region: one
@@ -34,7 +34,7 @@ sections:
           label_display: visible
           provider: varbase_dashboards
           context_mapping: {  }
-          total_control_admin_types_links:
+          varbase_dashboards_admin_types_links:
             landing_page_lb: landing_page_lb
             page: page
             varbase_blog: varbase_blog
@@ -63,20 +63,6 @@ sections:
           varbase_dashboards_spam_overview: null
         weight: 2
         additional: {  }
-      3f2cf4e5-7871-4213-99ec-1332a2570c06:
-        uuid: 3f2cf4e5-7871-4213-99ec-1332a2570c06
-        region: one
-        configuration:
-          id: 'views_block:control_content_panes-pane_tc_new'
-          label: 'New Content'
-          label_display: visible
-          provider: views
-          context_mapping: {  }
-          views_label: 'New Content'
-          items_per_page: none
-          exposed: {  }
-        weight: 3
-        additional: {  }
       99423a88-6680-4f1f-bb4b-a9dce39764b0:
         uuid: 99423a88-6680-4f1f-bb4b-a9dce39764b0
         region: one
@@ -88,4 +74,32 @@ sections:
           context_mapping: {  }
         weight: 4
         additional: {  }
+      f15dc4df-0fba-4478-80bb-0fa139e0cd7d:
+        uuid: f15dc4df-0fba-4478-80bb-0fa139e0cd7d
+        region: three
+        configuration:
+          id: 'views_block:varbase_dashboards_recently_created-block_content_you_created'
+          label: 'Content you created'
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: 'Content you created'
+          items_per_page: none
+          exposed: {  }
+        weight: 3
+        additional: { }
+      519d176e-5bb3-44aa-b34c-0c72d020066f:
+        uuid: 519d176e-5bb3-44aa-b34c-0c72d020066f
+        region: three
+        configuration:
+          id: 'views_block:varbase_dashboards_content_in_draft-block_your_drafts'
+          label: 'Your drafts'
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: 'Your drafts'
+          items_per_page: none
+          exposed: {  }
+        weight: 2
+        additional: { }
     third_party_settings: {  }

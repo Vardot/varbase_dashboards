@@ -1,0 +1,30 @@
+access varbase dashboards content:
+  title: "Access Varbase Dashboards Content"
+  description: "See the administrative dashboard for all content."
+access varbase dashboards content in draft:
+  title: "Access Varbase Dashboards Content In Draft"
+  description: "See the administrative dashboard for all content in draft."
+access varbase dashboards content in drafts by user:
+  title: "Access Varbase Dashboards Content In Drafts By User"
+  description: "See the administrative dashboard content for all current logged in user drafts."
+access varbase dashboards recent changes:
+  title: "Access Varbase Dashboards Recently Changes"
+  description: "See the administrative dashboard for list of all activities over content in the site."
+access varbase dashboards recent changes by user:
+  title: "Access Varbase Dashboards Recent Changes By User"
+  description: "See the administrative dashboard content for list of all activities over content for the current logged in user."
+access varbase dashboards recently created:
+  title: "Access Varbase Dashboards Recently Created"
+  description: "See the administrative dashboard for all list of new content in the site."
+access varbase dashboards recently created by user:
+  title: "Access Varbase Dashboards Recently Created By User"
+  description: "See the administrative dashboard content for list of new content for the current logged in user."
+access varbase dashboards terms:
+  title: "Access Varbase Dashboards Terms"
+  description: "See the administrative dashboard Terms."
+access varbase dashboards comments:
+  title: "Access Varbase Dashboards Comments"
+  description: "See the administrative dashboard comments."
+access varbase dashboards users:
+  title: "Access Varbase Dashboards Users"
+  description: "See the administrative dashboard users."

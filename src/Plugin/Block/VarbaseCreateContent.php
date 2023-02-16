@@ -122,7 +122,7 @@ class VarbaseCreateContent extends BlockBase implements BlockPluginInterface, Co
 
     foreach ($types as $type => $object) {
       // Check against pane config for type.
-      if ((!array_key_exists($type, $config['total_control_admin_types_links'])) || (isset($config['total_control_admin_types_links']) && $config['total_control_admin_types_links'][$type]) == $type) {
+      if ((!array_key_exists($type, $config['varbase_dashboards_admin_types_links'])) || (isset($config['varbase_dashboards_admin_types_links']) && $config['varbase_dashboards_admin_types_links'][$type]) == $type) {
         // Check access, then add a link to create content.
         if ($this->currentUser->hasPermission('create ' . $object->get('type') . ' content')) {
           $link_options = [
@@ -172,11 +172,11 @@ class VarbaseCreateContent extends BlockBase implements BlockPluginInterface, Co
       }
     }
 
-    $form['total_control_admin_types_links'] = [
+    $form['varbase_dashboards_admin_types_links'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Include Create links for Content Types'),
       '#options' => $type_defaults,
-      '#default_value' => $config['total_control_admin_types_links'],
+      '#default_value' => $config['varbase_dashboards_admin_types_links'],
     ];
 
     return $form;
@@ -188,7 +188,7 @@ class VarbaseCreateContent extends BlockBase implements BlockPluginInterface, Co
   public function blockSubmit($form, FormStateInterface $form_state) {
     parent::blockSubmit($form, $form_state);
     $values = $form_state->getValues();
-    $this->configuration['total_control_admin_types_links'] = $values['total_control_admin_types_links'];
+    $this->configuration['varbase_dashboards_admin_types_links'] = $values['varbase_dashboards_admin_types_links'];
   }
 
 }
