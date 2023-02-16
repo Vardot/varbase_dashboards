@@ -3,4 +3,4 @@ varbase_dashboards.dashboard:
   description: "See an overview of your site and get access to various useful functions and shortcuts."
   parent: system.admin
   url: "/admin/dashboard"
-  wight: -15
+  weight: -50
