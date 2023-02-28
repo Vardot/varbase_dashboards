@@ -20,10 +20,6 @@
     "drupal": {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    },
-    "assets": {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
     }
   },
   "require": {
@@ -33,15 +29,9 @@
     "drupal/core": "~10.0",
     "vardot/entity-definition-update-manager": "~1.0 || 1.0.x-dev",
     "vardot/module-installer-factory": "~1.0 || 1.0.x-dev",
-    "drupal/dashboards": "~2.0",
-    "drupal/charts": "~5.0",
-    "drupal/google_analytics_reports": "~4.0",
+    "drupal/dashboards": "~2.0"
   },
   "extra": {
-    "installer-types": [
-      "bower-asset",
-      "npm-asset"
-    ],
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
     "patches": {  }
