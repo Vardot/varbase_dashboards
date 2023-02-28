@@ -13,8 +13,7 @@ use Drupal\Core\Language\LanguageInterface;
  */
 function varbase_dashboards_install() {
 
-  // Processor for install: in varbase_dashboards.info.yml file using ModuleInstallerFactory.
-  // --------------------------------------------------------------------------.
+  // Processor for install: in varbase_dashboards.info.yml file.
   ModuleInstallerFactory::installList('varbase_dashboards');
 
   // Create a path alias for /dashboard/dashboard to work as /admin/dashboard.
@@ -24,4 +23,7 @@ function varbase_dashboards_install() {
     'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
   ]);
   $path_alias->save();
+
+  // Add permissions.
+  ModuleInstallerFactory::addPermissions('varbase_dashboards');
 }

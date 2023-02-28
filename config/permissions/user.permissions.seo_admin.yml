@@ -1,0 +1,3 @@
+id: seo_admin
+permissions:
+  - 'can view dashboard dashboard'

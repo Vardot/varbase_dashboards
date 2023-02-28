@@ -1,6 +1,6 @@
 {
   "name": "varbase_dashboards",
-  "description": "Varbase Dashboards",
+  "description": "This dashboard is built on top of Dashboards with Layout Builder module, utilize Drupal core's Layout Builder for dynamic dashboards management, Google Analytics Reports, and several enhanced blocks and widgets for an intuitive and flexible administration experience.",
   "private": true,
   "license": "GPL-2.0",
   "main": "gulpfile.js",
