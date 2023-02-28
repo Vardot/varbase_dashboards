@@ -1,4 +1,3 @@
-i
 {
   "name": "drupal/varbase_dashboards",
   "description": "This dashboard is built on top of Dashboards with Layout Builder module, utilize Drupal core's Layout Builder for dynamic dashboards management, Google Analytics Reports, and several enhanced blocks and widgets for an intuitive and flexible administration experience.",
