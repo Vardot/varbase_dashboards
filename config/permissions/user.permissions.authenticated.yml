@@ -1,2 +1,5 @@
 id: authenticated
-permissions: {  }
+permissions:
+  - 'access varbase dashboards content in drafts by user'
+  - 'access varbase dashboards recent changes by user'
+  - 'access varbase dashboards recently created by user'

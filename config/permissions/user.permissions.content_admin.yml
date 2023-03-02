@@ -1,3 +1,12 @@
 id: content_admin
 permissions:
   - 'can view dashboard dashboard'
+  - 'access varbase dashboards content'
+  - 'access varbase dashboards content in draft'
+  - 'access varbase dashboards content in drafts by user'
+  - 'access varbase dashboards recent changes'
+  - 'access varbase dashboards recent changes by user'
+  - 'access varbase dashboards recently created'
+  - 'access varbase dashboards recently created by user'
+  - 'access varbase dashboards terms'
+  - 'access varbase dashboards comments'
