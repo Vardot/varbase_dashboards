@@ -258,6 +258,10 @@ display:
             group_items: {  }
       style:
         type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
       query:
@@ -269,6 +273,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: ''
       use_ajax: true
       header: {  }
       footer: {  }
@@ -352,6 +357,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
+      block_hide_empty: true
     cache_metadata:
       max-age: -1
       contexts:
@@ -382,6 +388,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
+      block_hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:

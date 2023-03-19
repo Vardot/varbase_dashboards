@@ -199,7 +199,6 @@ display:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          uses_fields: false
       row:
         type: fields
         options:
@@ -348,6 +347,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
+      block_hide_empty: false
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,6 +1,36 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - layout_builder_restrictions
+third_party_settings:
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - 'Lists (Views)'
+      - Menus
+      - System
+      - User
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - layout_1
+        - layout_2
+        - layout_3
+      restricted_categories: {  }
+      whitelisted_blocks: {  }
+      blacklisted_blocks:
+        'Lists (Views)':
+          - 'views_block:content_recent-block_1'
+          - 'views_block:varbase_blog-related_blog_posts_block'
+          - 'views_block:taxonomy_term-block_1'
+          - 'views_block:varbase_dashboards_content-block_all_content'
+          - 'views_block:varbase_dashboards_content_in_draft-block_in_draft'
+          - 'views_block:varbase_dashboards_content_in_draft-block_your_drafts'
+          - 'views_block:varbase_dashboards_recent_changes-block_recent_changes'
+          - 'views_block:varbase_dashboards_recent_changes-block_your_activity'
+          - 'views_block:varbase_dashboards_recently_created-block_content_you_created'
+          - 'views_block:varbase_dashboards_recently_created-block_recently_created'
+          - 'views_block:varbase_dashboards_terms-block_terms'
+          - 'views_block:varbase_dashboards_users-block_users'
 id: dashboard
 admin_label: Dashboard
 category: ''
@@ -14,92 +44,115 @@ sections:
       context_mapping: {  }
       reverse: 0
     components:
-      08e298cf-f79a-4494-a273-0b1ff8c829b3:
-        uuid: 08e298cf-f79a-4494-a273-0b1ff8c829b3
+      d236ea61-aecd-41f2-baf1-2d894a40f4ab:
+        uuid: d236ea61-aecd-41f2-baf1-2d894a40f4ab
         region: one
         configuration:
-          id: varbase_dashboard_user
-          label: Dashboard
-          label_display: '0'
-          provider: varbase_dashboards
-          context_mapping: {  }
-        weight: 0
-        additional: { }
-      adbc6297-1ec2-4f2b-a0b9-2c7440a61959:
-        uuid: adbc6297-1ec2-4f2b-a0b9-2c7440a61959
-        region: one
-        configuration:
-          id: varbase_create_content
-          label: 'Create New Content'
+          id: 'dashboards_block:dashboard:add_content_menu'
+          label: 'Add content'
           label_display: visible
-          provider: varbase_dashboards
+          provider: dashboards
           context_mapping: {  }
-          varbase_dashboards_admin_types_links:
-            landing_page_lb: landing_page_lb
-            page: page
-            varbase_blog: varbase_blog
-            varbase_heroslider_media: varbase_heroslider_media
-        weight: 1
-        additional: {  }
-      61d7698d-eafc-4b48-aba0-2c6081798cac:
-        uuid: 61d7698d-eafc-4b48-aba0-2c6081798cac
-        region: one
-        configuration:
-          id: varbase_content_overview
-          label: 'My Site Overview'
-          label_display: visible
-          provider: varbase_dashboards
-          context_mapping: {  }
-          varbase_dashboards_types_overview:
-            landing_page_lb: landing_page_lb
-            page: page
-            varbase_blog: varbase_blog
-            varbase_heroslider_media: varbase_heroslider_media
-          varbase_dashboards_comments_overview:
-            landing_page_lb: 0
-            page: 0
-            varbase_blog: 0
-            varbase_heroslider_media: 0
-          varbase_dashboards_spam_overview: null
+          items:
+            landing_page_lb:
+              weight: '0'
+            page:
+              weight: '0'
+            varbase_blog:
+              weight: '0'
+            varbase_heroslider_media:
+              weight: '0'
         weight: 2
         additional: {  }
-      99423a88-6680-4f1f-bb4b-a9dce39764b0:
-        uuid: 99423a88-6680-4f1f-bb4b-a9dce39764b0
-        region: one
-        configuration:
-          id: varbase_quick_links
-          label: 'Quick Links'
-          label_display: visible
-          provider: varbase_dashboards
-          context_mapping: {  }
-        weight: 4
-        additional: {  }
-      f15dc4df-0fba-4478-80bb-0fa139e0cd7d:
-        uuid: f15dc4df-0fba-4478-80bb-0fa139e0cd7d
-        region: three
-        configuration:
-          id: 'views_block:varbase_dashboards_recently_created-block_content_you_created'
-          label: 'Content you created'
-          label_display: visible
-          provider: views
-          context_mapping: {  }
-          views_label: 'Content you created'
-          items_per_page: none
-          exposed: {  }
-        weight: 3
-        additional: { }
-      519d176e-5bb3-44aa-b34c-0c72d020066f:
-        uuid: 519d176e-5bb3-44aa-b34c-0c72d020066f
+      3731e4a6-1a12-4f11-91e0-5de11b731a6b:
+        uuid: 3731e4a6-1a12-4f11-91e0-5de11b731a6b
         region: three
         configuration:
           id: 'views_block:varbase_dashboards_content_in_draft-block_your_drafts'
-          label: 'Your drafts'
+          label: ''
           label_display: visible
           provider: views
           context_mapping: {  }
-          views_label: 'Your drafts'
+          views_label: ''
           items_per_page: none
           exposed: {  }
+        weight: 0
+        additional: {  }
+      9035fefe-9bd5-423a-8997-7f2ad89e73ac:
+        uuid: 9035fefe-9bd5-423a-8997-7f2ad89e73ac
+        region: two
+        configuration:
+          id: 'dashboards_block:dashboard:node_statistics'
+          label: 'Content types'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          chart_type: bar
+        weight: 0
+        additional: {  }
+      68f7f204-71c3-4963-bed7-8b26c88d6617:
+        uuid: 68f7f204-71c3-4963-bed7-8b26c88d6617
+        region: three
+        configuration:
+          id: 'views_block:varbase_dashboards_content-block_all_content'
+          label: 'All Content'
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: 'All Content'
+          items_per_page: '20'
+          exposed: {  }
         weight: 2
-        additional: { }
+        additional: {  }
+      a59e064f-17f2-462f-9931-c3c4a925507f:
+        uuid: a59e064f-17f2-462f-9931-c3c4a925507f
+        region: one
+        configuration:
+          id: varbase_dashboard_user
+          label: 'Varbase Dashboard User'
+          label_display: '0'
+          provider: varbase_dashboards
+          context_mapping: {  }
+        weight: 1
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_2
+    layout_settings:
+      label: ''
+      context_mapping: {  }
+    components:
+      ec0b2b12-7b1f-4677-8ee2-97705e006f14:
+        uuid: ec0b2b12-7b1f-4677-8ee2-97705e006f14
+        region: one
+        configuration:
+          id: 'dashboards_block:dashboard:status_updates'
+          label: 'Update status'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+      1abfea9d-9c3d-4efe-a61d-f8f490d8e8b2:
+        uuid: 1abfea9d-9c3d-4efe-a61d-f8f490d8e8b2
+        region: two
+        configuration:
+          id: 'dashboards_block:dashboard:system_info'
+          label: 'System info'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+      467d228b-4449-46a8-b590-fde9f7fcc73c:
+        uuid: 467d228b-4449-46a8-b590-fde9f7fcc73c
+        region: three
+        configuration:
+          id: 'dashboards_block:dashboard:error_report'
+          label: 'Error info'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
     third_party_settings: {  }

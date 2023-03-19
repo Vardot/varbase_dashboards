@@ -4,4 +4,8 @@ type: module
 core_version_requirement: ~10.0
 package: Varbase
 dependencies:
+  - drupal:content_moderation
+  - layout_builder_restrictions:layout_builder_restrictions
   - dashboards:dashboards
+  - dashboards:dashboards_views
+  - dashboards:dashboards_statistic

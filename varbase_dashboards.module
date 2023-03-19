@@ -35,32 +35,10 @@ function varbase_dashboards_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_modules_installed().
+ * Implements hook_toolbar().
  */
-function varbase_dashboards_modules_installed($modules) {
-  // When we enable the Comment module we load the Drupal standard configs.
-  // And the Varbase dashboards Comments view.
-  if (in_array('comment', $modules)) {
-
-    $comment_managed_optional_path = Drupal::service('module_handler')->getModule('varbase_dashboards')->getPath() . '/config/managed/comment';
-
-    // Drupal core standard profile configs for comment.
-    $comment_managed_optional_configs = [
-      'comment.type.comment',
-      'field.field.comment.comment.comment_body',
-      'core.entity_form_display.comment.comment.default',
-      'core.entity_view_display.comment.comment.default',
-      'field.storage.node.comment',
-      'views.view.varbase_dashboards_comments',
-    ];
-
-    foreach ($comment_managed_optional_configs as $config_name) {
-      $config_path = $comment_managed_optional_path . '/' . $config_name . '.yml';
-      $config_content = file_get_contents($config_path);
-      $config_data = (array) Yaml::parse($config_content);
-      $config_factory = \Drupal::configFactory()->getEditable($config_name);
-      $config_factory->setData($config_data)->save(TRUE);
-    }
+function varbase_dashboards_toolbar_alter(&$items) {
+  if (isset($items['dashboards'])) {
+    unset($items['dashboards']);
   }
-
 }

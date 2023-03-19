@@ -479,7 +479,20 @@ display:
       cache:
         type: tag
         options: {  }
-      empty: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'No users was found.'
+            format: plain_text
+          tokenize: false
       sorts: {  }
       arguments: {  }
       filters:
@@ -664,15 +677,20 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            name: name
             user_bulk_form: user_bulk_form
-            created: created
+            name: name
             mail: mail
+            roles: roles
+            created: created
             login: login
             edit_user: edit_user
-            roles: roles
           default: '-1'
           info:
+            user_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             name:
               sortable: true
               default_sort_order: asc
@@ -680,19 +698,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            user_bulk_form:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            created:
+            mail:
               sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            mail:
+            roles:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            created:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -709,11 +729,6 @@ display:
             edit_user:
               sortable: false
               default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            roles:
               align: ''
               separator: ''
               empty_column: false

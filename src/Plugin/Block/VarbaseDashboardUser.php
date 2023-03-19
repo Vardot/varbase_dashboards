@@ -112,9 +112,9 @@ class VarbaseDashboardUser extends BlockBase implements BlockPluginInterface, Co
 
     $name = Link::fromTextAndUrl($user->getDisplayName(), new Url('entity.user.edit_form', ['user' => $user->id()], $options))->toString();
     $url = new Url('entity.user.edit_form', ['user' => $user->id(), $options]);
-    $welcom_back_text = $this->t('Welcome back');
+    $welcome_back_text = $this->t('Welcome back');
 
-    $markup_data = '<div class="content"> <div class="welcome"><p class="welcome-back">' . $welcom_back_text . '</p><p class="name"> ' . $name . ' </p></div><div class="action-links"><a class="button button-action button--primary button--small" href="' . $url->toString() . '">' . $this->t('Edit Account') . '</a></div></div>';
+    $markup_data = '<div class="content"> <div class="welcome"><p class="welcome-back">' . $welcome_back_text . '</p><p class="name"> ' . $name . ' </p></div><div class="action-links"><a class="button button-action" href="' . $url->toString() . '">' . $this->t('Edit Account') . '</a></div></div>';
 
     return [
       '#type' => 'markup',
