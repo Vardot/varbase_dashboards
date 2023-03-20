@@ -29,16 +29,11 @@
     "drupal/core": "~10.0",
     "vardot/entity-definition-update-manager": "~1.0 || 1.0.x-dev",
     "vardot/module-installer-factory": "~1.0 || 1.0.x-dev",
-    "drupal/dashboards": "2.1.2"
+    "drupal/dashboards": "~2.0"
   },
   "extra": {
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
-    "patches": {
-      "drupal/dashboards": {
-        "Issue #3347975: Fix Entity queries must explicitly set whether the query should be access checked or not in Dashboards with Layout Builder":
-        "https://www.drupal.org/files/issues/2023-03-15/3347975-7.patch"
-      }
-    }
+    "patches": {  }
   }
 }
