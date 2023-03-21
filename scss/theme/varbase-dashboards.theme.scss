@@ -1,7 +1,11 @@
 body {
   .panel__content,
   .panel__description {
-    padding: 1em 1.5em;
+    padding: var(--gin-spacing-s) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-m);
+
+    .status-report-card {
+      text-align: center;
+    }
   }
 
   #edit-preview-toggle {
@@ -9,6 +13,11 @@ body {
   }
 
   .block-varbase-dashboard-user {
+
+    .panel__content,
+    .panel__description {
+      padding: var(--gin-spacing-xxl) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-xxl);
+    }
 
     .content:before {
       content: ' ';
@@ -56,5 +65,13 @@ body {
     .action-links {
       text-align: left;
     }
+  }
+}
+
+.gin-layer-wrapper {
+  .gin-layer-wrapper {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
   }
 }

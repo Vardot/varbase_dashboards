@@ -16,11 +16,9 @@ third_party_settings:
         - layout_2
         - layout_3
       restricted_categories: {  }
-      whitelisted_blocks: {  }
-      blacklisted_blocks:
+      whitelisted_blocks:
         'Lists (Views)':
           - 'views_block:content_recent-block_1'
-          - 'views_block:varbase_blog-related_blog_posts_block'
           - 'views_block:taxonomy_term-block_1'
           - 'views_block:varbase_dashboards_content-block_all_content'
           - 'views_block:varbase_dashboards_content_in_draft-block_in_draft'
@@ -31,6 +29,10 @@ third_party_settings:
           - 'views_block:varbase_dashboards_recently_created-block_recently_created'
           - 'views_block:varbase_dashboards_terms-block_terms'
           - 'views_block:varbase_dashboards_users-block_users'
+        Menus: {  }
+        System: {  }
+        User: {  }
+      blacklisted_blocks: {  }
 id: dashboard
 admin_label: Dashboard
 category: ''
@@ -75,19 +77,13 @@ sections:
           context_mapping: {  }
           views_label: ''
           items_per_page: none
+          pager: none
+          fields:
+            title:
+              hide: false
+              weight: 0
           exposed: {  }
-        weight: 0
-        additional: {  }
-      9035fefe-9bd5-423a-8997-7f2ad89e73ac:
-        uuid: 9035fefe-9bd5-423a-8997-7f2ad89e73ac
-        region: two
-        configuration:
-          id: 'dashboards_block:dashboard:node_statistics'
-          label: 'Content types'
-          label_display: visible
-          provider: dashboards
-          context_mapping: {  }
-          chart_type: bar
+          pager_offset: 0
         weight: 0
         additional: {  }
       68f7f204-71c3-4963-bed7-8b26c88d6617:
@@ -100,8 +96,56 @@ sections:
           provider: views
           context_mapping: {  }
           views_label: 'All Content'
-          items_per_page: '20'
-          exposed: {  }
+          items_per_page: '25'
+          pager: view
+          fields:
+            node_bulk_form:
+              hide: false
+              weight: 0
+            title:
+              hide: false
+              weight: 0
+            uid:
+              hide: false
+              weight: 0
+            created:
+              hide: false
+              weight: 0
+            changed:
+              hide: false
+              weight: 0
+            status:
+              hide: false
+              weight: 0
+            edit_node:
+              hide: false
+              weight: 0
+          exposed:
+            filter-status:
+              plugin_id: boolean
+              value: All
+              exposed: true
+              expose:
+                use_operator: false
+            filter-uid:
+              plugin_id: numeric
+              value: ''
+              exposed: true
+              expose:
+                use_operator: false
+            filter-combine:
+              plugin_id: combine
+              value: ''
+              exposed: true
+              expose:
+                use_operator: false
+            filter-type:
+              plugin_id: bundle
+              value: All
+              exposed: true
+              expose:
+                use_operator: false
+          pager_offset: 0
         weight: 2
         additional: {  }
       a59e064f-17f2-462f-9931-c3c4a925507f:
@@ -114,6 +158,18 @@ sections:
           provider: varbase_dashboards
           context_mapping: {  }
         weight: 1
+        additional: {  }
+      9035fefe-9bd5-423a-8997-7f2ad89e73ac:
+        uuid: 9035fefe-9bd5-423a-8997-7f2ad89e73ac
+        region: one
+        configuration:
+          id: 'dashboards_block:dashboard:node_statistics'
+          label: 'Content types'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          chart_type: bar
+        weight: 3
         additional: {  }
     third_party_settings: {  }
   -

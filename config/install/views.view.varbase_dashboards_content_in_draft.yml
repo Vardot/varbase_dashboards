@@ -110,7 +110,7 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -215,7 +215,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      use_ajax: true
+      use_ajax: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -348,6 +348,15 @@ display:
           metatags: {  }
           tokenize: false
       block_hide_empty: false
+      allow:
+        items_per_page: true
+        offset: offset
+        pager: pager
+        hide_fields: hide_fields
+        sort_fields: sort_fields
+        configure_filters: configure_filters
+        disable_filters: disable_filters
+        configure_sorts: configure_sorts
     cache_metadata:
       max-age: -1
       contexts:
@@ -515,6 +524,15 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
+      allow:
+        items_per_page: true
+        offset: offset
+        pager: pager
+        hide_fields: hide_fields
+        sort_fields: sort_fields
+        configure_filters: configure_filters
+        disable_filters: disable_filters
+        configure_sorts: configure_sorts
     cache_metadata:
       max-age: -1
       contexts:

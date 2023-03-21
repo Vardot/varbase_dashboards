@@ -11,3 +11,4 @@ permissions:
   - 'access varbase dashboards terms'
   - 'access varbase dashboards comments'
   - 'access varbase dashboards users'
+  - 'can override dashboard dashboard'
