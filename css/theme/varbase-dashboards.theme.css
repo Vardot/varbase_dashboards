@@ -41,6 +41,7 @@ body .block-varbase-dashboard-user .action-links {
 }
 
 .dashboards-layout-builder-form #edit-actions {
+  position: relative;
   margin-top: 0;
 }
 .dashboards-layout-builder-form #edit-preview-toggle {
