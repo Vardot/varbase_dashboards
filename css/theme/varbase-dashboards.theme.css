@@ -46,6 +46,6 @@ body .block-varbase-dashboard-user .action-links {
 }
 .dashboards-layout-builder-form #edit-preview-toggle {
   position: absolute;
-  right: 4.5rem;
+  right: 0;
   margin-top: -0.8rem;
 }
