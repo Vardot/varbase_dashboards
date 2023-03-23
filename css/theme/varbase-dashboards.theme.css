@@ -1,14 +1,3 @@
-body .panel__content,
-body .panel__description {
-  padding: var(--gin-spacing-s) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-m);
-}
-body .panel__content .status-report-card,
-body .panel__description .status-report-card {
-  text-align: center;
-}
-body #edit-preview-toggle {
-  display: none;
-}
 body .block-varbase-dashboard-user .panel__content,
 body .block-varbase-dashboard-user .panel__description {
   padding: var(--gin-spacing-xxl) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-xxl);
@@ -51,8 +40,11 @@ body .block-varbase-dashboard-user .action-links {
   text-align: left;
 }
 
-.gin-layer-wrapper .gin-layer-wrapper {
-  padding: 0;
-  border: 0;
-  box-shadow: none;
+.dashboards-layout-builder-form #edit-actions {
+  margin-top: 0;
+}
+.dashboards-layout-builder-form #edit-preview-toggle {
+  position: absolute;
+  right: 4.5rem;
+  margin-top: -0.8rem;
 }

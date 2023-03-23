@@ -1,17 +1,4 @@
 body {
-  .panel__content,
-  .panel__description {
-    padding: var(--gin-spacing-s) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-m);
-
-    .status-report-card {
-      text-align: center;
-    }
-  }
-
-  #edit-preview-toggle {
-    display: none;
-  }
-
   .block-varbase-dashboard-user {
 
     .panel__content,
@@ -68,10 +55,14 @@ body {
   }
 }
 
-.gin-layer-wrapper {
-  .gin-layer-wrapper {
-    padding: 0;
-    border: 0;
-    box-shadow: none;
+.dashboards-layout-builder-form {
+  #edit-actions {
+    margin-top: 0;
+  }
+
+  #edit-preview-toggle {
+    position: absolute;
+    right: 4.5rem;
+    margin-top: -0.8rem;
   }
 }

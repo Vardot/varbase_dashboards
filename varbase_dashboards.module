@@ -40,21 +40,3 @@ function varbase_dashboards_toolbar_alter(&$items) {
     unset($items['dashboards']);
   }
 }
-
-/**
- * Implements hook_preprocess_block().
- */
-function varbase_dashboards_preprocess_block(&$variables) {
-  $active_theme = \Drupal::theme()->getActiveTheme();
-  $base_themes = (array) $active_theme->getBaseThemeExtensions();
-
-  if ($active_theme->getName() === 'gin'|| array_key_exists('gin', $base_themes)) {
-    if (
-      isset($variables['attributes']) &&
-      isset($variables['attributes']['class']) &&
-      in_array('dashboard-gin-panel', $variables['attributes']['class'])
-    ) {
-      $variables['attributes']['class'][] = 'gin-layer-wrapper';
-    }
-  }
-}
