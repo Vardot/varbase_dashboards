@@ -49,3 +49,13 @@ body .block-varbase-dashboard-user .action-links {
   right: 0;
   margin-top: -0.8rem;
 }
+
+#drupal-off-canvas-wrapper .item-list ul.layout-selection li {
+  margin: 0 !important;
+  list-style-type: none !important;
+}
+#drupal-off-canvas-wrapper .layout-selection a {
+  flex-wrap: nowrap;
+  width: max-content;
+  padding: 0.625rem 0;
+}

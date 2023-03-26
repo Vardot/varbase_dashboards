@@ -67,3 +67,21 @@ body {
     margin-top: -0.8rem;
   }
 }
+#drupal-off-canvas-wrapper {
+  .item-list {
+    ul.layout-selection {
+      li {
+        list-style-type: none !important;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  .layout-selection {
+    a {
+      flex-wrap: nowrap;
+      padding: 0.625rem 0;
+      width: max-content;
+    }
+  }
+}
