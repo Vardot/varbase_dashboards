@@ -59,3 +59,20 @@ body .block-varbase-dashboard-user .action-links {
   width: max-content;
   padding: 0.625rem 0;
 }
+
+.layouts-dashboards-1 .drow,
+.layouts-dashboards-2 .drow,
+.layouts-dashboards-3 .drow {
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+}
+.layouts-dashboards-1 .drow:last-child,
+.layouts-dashboards-2 .drow:last-child,
+.layouts-dashboards-3 .drow:last-child {
+  padding-left: 0;
+}
+.layouts-dashboards-1 .drow:last-child,
+.layouts-dashboards-2 .drow:last-child,
+.layouts-dashboards-3 .drow:last-child {
+  padding-right: 0;
+}

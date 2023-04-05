@@ -67,6 +67,7 @@ body {
     margin-top: -0.8rem;
   }
 }
+
 #drupal-off-canvas-wrapper {
   .item-list {
     ul.layout-selection {
@@ -82,6 +83,24 @@ body {
       flex-wrap: nowrap;
       padding: 0.625rem 0;
       width: max-content;
+    }
+  }
+}
+
+.layouts-dashboards-1,
+.layouts-dashboards-2,
+.layouts-dashboards-3 {
+
+  .drow {
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+
+    &:last-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
     }
   }
 }
