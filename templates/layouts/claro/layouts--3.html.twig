@@ -1,0 +1,23 @@
+<div {{ attributes.addClass('layout-row', 'clearfix') }}>
+{% if content.one %}
+  <div class="layout-column">
+    <div {{ region_attributes.one }}>
+      {{ content.one }}
+    </div>
+  </div>
+  {% endif %}
+  {% if content.two %}
+  <div class="layout-column">
+    <div {{ region_attributes.two }}>
+      {{ content.two }}
+    </div>
+  </div>
+  {% endif %}
+  {% if content.two %}
+  <div class="layout-column">
+    <div {{ region_attributes.three }}>
+      {{ content.two }}
+    </div>
+  </div>
+  {% endif %}
+</div>
