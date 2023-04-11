@@ -45,25 +45,23 @@ function varbase_dashboards_toolbar_alter(&$items) {
  * Implements hook_layout_alter().
  */
 function varbase_dashboards_layout_alter(&$definitions) {
-  $supported_themes = ['gin', 'claro'];
   $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+  $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
 
-  if (in_array($active_theme, $supported_themes)) {
-    $varbase_dashboards_patch = \Drupal::service('extension.list.module')->getPath('varbase_dashboards');
-    foreach ($definitions as $layout_id => $definition) {
+  if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
+    foreach($definitions as $layout_id => $definition) {
       if (_is_in_back_end_layout_list($layout_id)) {
-        _set_layout_template_path_and_cache_tags($definition, $active_theme, $varbase_dashboards_patch, $layout_id);
+        $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin');
       }
     }
   }
-}
-
-/**
- * Set the template path and cache tags for a layout definition.
- */
-function _set_layout_template_path_and_cache_tags($definition, $theme, $patch, $layout_id) {
-  $definition->setTemplatePath($patch . '/templates/layouts/' . $theme);
-  $definition->addCacheTags([$theme . ':layout:' . $layout_id]);
+  elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
+    foreach($definitions as $layout_id => $definition) {
+      if (_is_in_back_end_layout_list($layout_id)) {
+        $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro');;
+      }
+    }
+  }
 }
 
 /**
