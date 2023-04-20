@@ -5,6 +5,8 @@
  * Contains varbase_dashboards.module.
  */
 
+use Drupal\Core\Layout\LayoutDefinition;
+
 /**
  * Implements hook_element_info_alter().
  */
@@ -22,17 +24,6 @@ function varbase_dashboards_page_attachments(array &$attachments) {
 }
 
 /**
- * Implements hook_theme().
- */
-function varbase_dashboards_theme($existing, $type, $theme, $path) {
-  return [
-    'block__varbase_dashboard_user' => [
-      'base hook' => 'block',
-    ],
-  ];
-}
-
-/**
  * Implements hook_toolbar().
  */
 function varbase_dashboards_toolbar_alter(&$items) {
@@ -42,23 +33,73 @@ function varbase_dashboards_toolbar_alter(&$items) {
 }
 
 /**
- * Implements hook_layout_alter().
+ * Implements hook_theme().
  */
-function varbase_dashboards_layout_alter(&$definitions) {
-  $active_theme = \Drupal::theme()->getActiveTheme()->getName();
-  $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
+function varbase_dashboards_theme($existing, $type, $theme, $path) {
 
-  if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
-    foreach($definitions as $layout_id => $definition) {
-      if (_is_in_back_end_layout_list($layout_id)) {
-        $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin');
+  $theme = [
+    'block__varbase_dashboard_user' => [
+      'base hook' => 'block',
+    ],
+  ];
+
+  if (\Drupal::service('theme.manager')->getActiveTheme()->getName() === \Drupal::config('system.theme')->get('admin')) {
+    $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+    $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
+
+    if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
+      foreach(_back_end_layout_themes() as $layout_id => $layout_name) {
+        $theme[$layout_name] = [
+          'template' => str_replace("_", "-", $layout_name),
+          'render element' => 'content',
+          'base hook' => 'layout',
+          'path' => \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin',
+        ];
+      }
+    }
+    elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
+      foreach(_back_end_layout_themes() as $layout_id => $layout_name) {
+        $theme[$layout_name] = [
+          'template' => str_replace("_", "-", $layout_name),
+          'render element' => 'content',
+          'base hook' => 'layout',
+          'path' => \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro',
+        ];
       }
     }
   }
-  elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
-    foreach($definitions as $layout_id => $definition) {
-      if (_is_in_back_end_layout_list($layout_id)) {
-        $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro');;
+
+  return $theme;
+}
+
+/**
+ * Implements hook_layout_alter().
+ */
+function varbase_dashboards_layout_alter(&$definitions) {
+  if (\Drupal::service('theme.manager')->getActiveTheme()->getName() === \Drupal::config('system.theme')->get('admin')) {
+    $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+    $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
+
+    if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
+      foreach($definitions as $layout_id => $definition) {
+        // Verify that the layout definition is a LayoutDefinition
+        if (!($definitions[$layout_id] instanceof LayoutDefinition)) {
+          continue;
+        }
+        if (_is_in_back_end_supported_layouts($layout_id)) {
+          $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin');
+        }
+      }
+    }
+    elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
+      foreach($definitions as $layout_id => $definition) {
+          // Verify that the layout definition is a LayoutDefinition
+          if (!($definitions[$layout_id] instanceof LayoutDefinition)) {
+            continue;
+          }
+          if (_is_in_back_end_supported_layouts($layout_id)) {
+          $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro');;
+        }
       }
     }
   }
@@ -67,7 +108,14 @@ function varbase_dashboards_layout_alter(&$definitions) {
 /**
  * Is the layout ID in the preset of back-end supported layouts.
  */
-function _is_in_back_end_layout_list($layout_id) {
+function _is_in_back_end_supported_layouts($layout_id) {
+  return in_array($layout_id, _back_end_supported_layouts());
+}
+
+/**
+ * Back-End supported layouts.
+ */
+function _back_end_supported_layouts() {
   $back_end_layout_list = [
     'layout_onecol',
     'layout_twocol',
@@ -82,5 +130,26 @@ function _is_in_back_end_layout_list($layout_id) {
     'layout_3',
   ];
 
-  return in_array($layout_id, $back_end_layout_list);
+  return $back_end_layout_list;
+}
+
+/**
+ * Back-End supported layout themes.
+ */
+function _back_end_layout_themes() {
+  $back_end_layout_list = [
+    'layout__onecol',
+    'layout__twocol',
+    'layout__twocol_bricks',
+    'layout__threecol_25_50_25',
+    'layout__threecol_33_34_33',
+    'layout__twocol_section',
+    'layout__threecol_section',
+    'layout__fourcol_section',
+    'layouts_1',
+    'layouts_2',
+    'layouts_3',
+  ];
+
+  return $back_end_layout_list;
 }
