@@ -68,6 +68,17 @@ body {
   }
 }
 
+.path-dashboards {
+  .block-system {
+    > form {
+      .gin-layer-wrapper {
+        border: 1px solid var(--gin-border-color-layer) !important;
+        box-shadow: var(--gin-shadow-l1) !important;
+      }
+    }
+  }
+}
+
 #drupal-off-canvas-wrapper {
   .item-list {
     ul.layout-selection {

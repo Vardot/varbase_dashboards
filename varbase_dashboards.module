@@ -73,33 +73,24 @@ function varbase_dashboards_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_layout_alter().
+ * Implements hook_theme_registry_alter().
  */
-function varbase_dashboards_layout_alter(&$definitions) {
+function varbase_dashboards_theme_registry_alter(&$info) {
+
   if (\Drupal::service('theme.manager')->getActiveTheme()->getName() === \Drupal::config('system.theme')->get('admin')) {
     $active_theme = \Drupal::theme()->getActiveTheme()->getName();
     $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
 
     if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
-      foreach($definitions as $layout_id => $definition) {
-        // Verify that the layout definition is a LayoutDefinition
-        if (!($definitions[$layout_id] instanceof LayoutDefinition)) {
-          continue;
-        }
-        if (_is_in_back_end_supported_layouts($layout_id)) {
-          $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin');
-        }
+      foreach(_back_end_layout_themes() as $layout_id) {
+        $info[$layout_id]['theme path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath();
+        $info[$layout_id]['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin';
       }
     }
     elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
-      foreach($definitions as $layout_id => $definition) {
-          // Verify that the layout definition is a LayoutDefinition
-          if (!($definitions[$layout_id] instanceof LayoutDefinition)) {
-            continue;
-          }
-          if (_is_in_back_end_supported_layouts($layout_id)) {
-          $definitions[$layout_id]->setTemplatePath(\Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro');;
-        }
+      foreach(_back_end_layout_themes() as $layout_id) {
+        $info[$layout_id]['theme path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath();
+        $info[$layout_id]['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro';
       }
     }
   }
@@ -146,9 +137,9 @@ function _back_end_layout_themes() {
     'layout__twocol_section',
     'layout__threecol_section',
     'layout__fourcol_section',
-    'layouts_1',
-    'layouts_2',
-    'layouts_3',
+    'layouts__1',
+    'layouts__2',
+    'layouts__3',
   ];
 
   return $back_end_layout_list;

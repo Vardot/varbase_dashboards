@@ -50,6 +50,11 @@ body .block-varbase-dashboard-user .action-links {
   margin-top: -0.8rem;
 }
 
+.path-dashboards .block-system > form .gin-layer-wrapper {
+  border: 1px solid var(--gin-border-color-layer) !important;
+  box-shadow: var(--gin-shadow-l1) !important;
+}
+
 #drupal-off-canvas-wrapper .item-list ul.layout-selection li {
   margin: 0 !important;
   list-style-type: none !important;
