@@ -33,6 +33,16 @@ function varbase_dashboards_toolbar_alter(&$items) {
 }
 
 /**
+ * Implements hook_element_info_alter().
+ */
+function varbase_dashboards_element_info_alter(array &$types) {
+  // Attach our extra CSS for toolbar icons.
+  if (isset($types['toolbar'])) {
+    $types['toolbar']['#attached']['library'][] = 'varbase_dashboards/toolbar';
+  }
+}
+
+/**
  * Implements hook_theme().
  */
 function varbase_dashboards_theme($existing, $type, $theme, $path) {

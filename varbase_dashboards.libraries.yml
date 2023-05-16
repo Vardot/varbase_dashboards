@@ -2,3 +2,8 @@ style:
   css:
     theme:
       css/theme/varbase-dashboards.theme.css: {}
+
+toolbar:
+  css:
+    theme:
+      css/theme/toolbar.theme.css: {}

@@ -1,0 +1,4 @@
+body .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.toolbar-icon-varbase-dashboards-dashboard:before {
+  -webkit-mask-image: url(../../images/web-dashboard.svg) !important;
+  mask-image: url(../../images/web-dashboard.svg) !important;
+}
