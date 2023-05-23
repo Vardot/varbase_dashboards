@@ -5,8 +5,6 @@
  * Contains varbase_dashboards.module.
  */
 
-use Drupal\Core\Layout\LayoutDefinition;
-
 /**
  * Implements hook_element_info_alter().
  */
@@ -58,7 +56,7 @@ function varbase_dashboards_theme($existing, $type, $theme, $path) {
     $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
 
     if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
-      foreach(_back_end_layout_themes() as $layout_id => $layout_name) {
+      foreach (_back_end_layout_themes() as $layout_name) {
         $theme[$layout_name] = [
           'template' => str_replace("_", "-", $layout_name),
           'render element' => 'content',
@@ -68,7 +66,7 @@ function varbase_dashboards_theme($existing, $type, $theme, $path) {
       }
     }
     elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
-      foreach(_back_end_layout_themes() as $layout_id => $layout_name) {
+      foreach (_back_end_layout_themes() as $layout_name) {
         $theme[$layout_name] = [
           'template' => str_replace("_", "-", $layout_name),
           'render element' => 'content',
@@ -92,13 +90,13 @@ function varbase_dashboards_theme_registry_alter(&$info) {
     $base_theme_extensions = \Drupal::theme()->getActiveTheme()->getBaseThemeExtensions();
 
     if ($active_theme === 'gin' || in_array('gin', array_keys($base_theme_extensions))) {
-      foreach(_back_end_layout_themes() as $layout_id) {
+      foreach (_back_end_layout_themes() as $layout_id) {
         $info[$layout_id]['theme path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath();
         $info[$layout_id]['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/gin';
       }
     }
     elseif ($active_theme === 'claro' || in_array('claro', array_keys($base_theme_extensions))) {
-      foreach(_back_end_layout_themes() as $layout_id) {
+      foreach (_back_end_layout_themes() as $layout_id) {
         $info[$layout_id]['theme path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath();
         $info[$layout_id]['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro';
       }
