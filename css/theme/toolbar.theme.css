@@ -2,3 +2,14 @@ body .toolbar .toolbar-bar .toolbar-menu-administration .toolbar-icon.toolbar-ic
   -webkit-mask-image: url(../../images/web-dashboard.svg) !important;
           mask-image: url(../../images/web-dashboard.svg) !important;
 }
+
+aside#admin-toolbar .admin-toolbar__logo {
+  border-radius: 0;
+  margin: 1rem;
+}
+
+aside#admin-toolbar .toolbar-link--has-icon.toolbar-link--dashboard::before {
+  --icon: url(../../images/web-dashboard.svg);
+  -webkit-mask-image: var(--icon);
+          mask-image: var(--icon);
+}

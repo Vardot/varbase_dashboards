@@ -11,4 +11,19 @@ body {
       }
     }
   }
-} 
+}
+
+aside#admin-toolbar {
+  .admin-toolbar__logo {
+    border-radius: 0;
+    margin: 1rem;
+  }
+
+  .toolbar-link--has-icon {
+    &.toolbar-link--dashboard::before {
+      --icon: url("../../images/web-dashboard.svg");
+      -webkit-mask-image: var(--icon);
+      mask-image: var(--icon);
+    }
+  }
+}
