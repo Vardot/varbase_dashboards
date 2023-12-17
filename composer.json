@@ -29,11 +29,14 @@
     "drupal/core": "~10",
     "vardot/entity-definition-update-manager": "~1",
     "vardot/module-installer-factory": "~1",
-    "drupal/dashboards": "~2"
+    "drupal/dashboards": "2.1.6"
   },
   "extra": {
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
-    "patches": {  }
+    "patches": {
+      "Issue #3409306: Fix calling of a static method on a multilingual Drupal ~10.2.0 under PHP 8.1, 8.2":
+      "https://www.drupal.org/files/issues/2023-12-17/3409306-4.patch"
+    }
   }
 }
