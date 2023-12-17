@@ -35,8 +35,10 @@
     "enable-patching": true,
     "composer-exit-on-patch-failure": true,
     "patches": {
-      "Issue #3409306: Fix calling of a static method on a multilingual Drupal ~10.2.0 under PHP 8.1, 8.2":
-      "https://www.drupal.org/files/issues/2023-12-17/3409306-4.patch"
+      "drupal/dashboards": {
+        "Issue #3409306: Fix calling of a static method on a multilingual Drupal ~10.2.0 under PHP 8.1, 8.2":
+        "https://www.drupal.org/files/issues/2023-12-17/3409306-4.patch"
+      }
     }
   }
 }
