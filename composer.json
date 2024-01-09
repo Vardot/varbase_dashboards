@@ -38,6 +38,8 @@
       "drupal/dashboards": {
         "Issue #3409306: Fix calling of a static method on a multilingual Drupal ~10.2.0 under PHP 8.1, 8.2":
         "https://www.drupal.org/files/issues/2023-12-17/3409306-4.patch",
+        "Issue #3356296: Fix Warning: Trying to access array offset on value of type null in the system Info dashboard plugin":
+        "https://www.drupal.org/files/issues/2023-04-25/3356296-2.patch",
         "Issue #3413086: Fix Deprecated function: strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated":
         "https://www.drupal.org/files/issues/2024-01-08/3413086-3.patch"
       }
