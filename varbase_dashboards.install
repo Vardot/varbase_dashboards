@@ -5,25 +5,15 @@
  * Install, update and uninstall functions for the Varbase Dashboards module.
  */
 
-use Vardot\Installer\ModuleInstallerFactory;
-use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Recipe\Recipe;
+use Drupal\Core\Recipe\RecipeRunner;
 
 /**
  * Implements hook_install().
  */
 function varbase_dashboards_install() {
 
-  // Processor for install: in varbase_dashboards.info.yml file.
-  ModuleInstallerFactory::installList('varbase_dashboards');
+  $default_recipe = Recipe::createFromDirectory(__DIR__ . '/recipes/default');
+  RecipeRunner::processRecipe($default_recipe);
 
-  // Create a path alias for /dashboard/dashboard to work as /admin/dashboard.
-  $path_alias = \Drupal::entityTypeManager()->getStorage('path_alias')->create([
-    'path' => '/dashboard/dashboard',
-    'alias' => '/admin/dashboard',
-    'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
-  ]);
-  $path_alias->save();
-
-  // Add permissions.
-  ModuleInstallerFactory::addPermissions('varbase_dashboards');
 }
