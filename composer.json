@@ -25,6 +25,7 @@
   "require": {
     "drupal/core": "~10.4.0 || ~11.1.0",
     "vardot/varbase-patches": "~9 || ~10.1.0 || 10.1.x-dev",
-    "drupal/dashboards": "~2"
+    "drupal/dashboards": "~2",
+    "drupal/statistics": "*"
   }
 }
