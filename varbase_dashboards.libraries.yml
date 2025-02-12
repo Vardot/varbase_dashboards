@@ -3,7 +3,12 @@ style:
     theme:
       css/theme/varbase-dashboards.theme.css: {}
 
-toolbar:
+admin-navigation:
   css:
     theme:
-      css/theme/toolbar.theme.css: {}
+      css/theme/varbase-dashboards.admin-navigation.theme.css: {}
+
+admin-toolbar:
+  css:
+    theme:
+      css/theme/varbase-dashboards.admin-toolbar.theme.css: {}
