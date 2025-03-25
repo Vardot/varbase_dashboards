@@ -1,1 +1,1 @@
-# Moved to optional
+# Moved to the default recipe.
