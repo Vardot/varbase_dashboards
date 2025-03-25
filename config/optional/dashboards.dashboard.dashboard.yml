@@ -161,18 +161,6 @@ sections:
               weight: '0'
         weight: 1
         additional: {  }
-      9035fefe-9bd5-423a-8997-7f2ad89e73ac:
-        uuid: 9035fefe-9bd5-423a-8997-7f2ad89e73ac
-        region: first
-        configuration:
-          id: 'dashboards_block:dashboard:node_statistics'
-          label: 'Content types'
-          label_display: visible
-          provider: dashboards
-          context_mapping: {  }
-          chart_type: bar
-        weight: 2
-        additional: {  }
       b200c363-7fe7-4165-b769-f3691fb5c8d2:
         uuid: b200c363-7fe7-4165-b769-f3691fb5c8d2
         region: first
