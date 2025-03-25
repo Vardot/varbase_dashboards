@@ -3,9 +3,3 @@ description: This dashboard is built on top of Dashboards with Layout Builder mo
 type: module
 core_version_requirement: '>=11.1'
 package: Varbase
-dependencies:
-  - drupal:content_moderation
-  - layout_builder_restrictions:layout_builder_restrictions
-  - dashboards:dashboards
-  - dashboards:dashboards_views
-  - dashboards:dashboards_statistic

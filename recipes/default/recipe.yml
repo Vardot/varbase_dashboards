@@ -1,7 +1,23 @@
 name: Varbase Dashboards - Default
 description: A recipe to manage default installed modules, configs and permissions.
 type: install
+install:
+  - content_moderation
+  - layout_builder_restrictions
+  - dashboards
+  - dashboards_views
 config:
+  import:
+    dashboards: '*'
+    dashboards_views: '*'
+    varbase_dashboards:
+      - views.view.varbase_dashboards_content_in_draft
+      - views.view.varbase_dashboards_content
+      - views.view.varbase_dashboards_recent_changes
+      - views.view.varbase_dashboards_recently_created.
+      - views.view.varbase_dashboards_terms
+      - views.view.varbase_dashboards_users
+      - dashboards.dashboard.dashboard
   actions:
     user.role.authenticated:
       grantPermissions:
