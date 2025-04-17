@@ -24,7 +24,7 @@
   },
   "require": {
     "drupal/core": ">=11.1",
-    "vardot/varbase-patches": "~10.1.0 || 10.1.x-dev",
+    "vardot/varbase-patches": "~10.1.0",
     "drupal/dashboards": "~2",
     "drupal/statistics": "~1.0.0"
   }
