@@ -1,8 +1,7 @@
 body {
   .block-varbase-dashboard-user {
 
-    .panel__content,
-    .panel__description {
+    .content {
       padding: var(--gin-spacing-xxl) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-xxl);
     }
 
@@ -38,7 +37,26 @@ body {
 
     .action-links {
       text-align: right;
+
+      .button {
+        &:hover {
+          color: white;
+          text-decoration: none;
+        }
+      }
     }
+  }
+
+  .view-varbase-dashboards-content {
+    .views-exposed-form {
+      box-shadow: none;
+      border: none;
+      margin-bottom: 0;
+    }
+  }
+
+  .admin-list--panel {
+    margin: var(--gin-spacing-s);
   }
 }
 
@@ -113,5 +131,21 @@ body {
     &:last-child {
       padding-right: 0;
     }
+  }
+}
+
+.dashboard {
+  & .layout {
+    & .block {
+      margin-block-end: 30px;
+      margin-inline-end: 30px;
+    }
+  }
+}
+
+.toolbar-tray-open:not(.toolbar-vertical),
+body:not(.toolbar-tray-open) {
+  .layout__region.layout-column {
+    padding: 0;
   }
 }

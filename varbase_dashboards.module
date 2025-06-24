@@ -5,14 +5,18 @@
  * Contains varbase_dashboards.module.
  */
 
+use Drupal\Core\Template\Attribute;
+
 /**
  * Implements hook_element_info_alter().
  */
 function varbase_dashboards_page_attachments(array &$attachments) {
+
   $routers = [
+    'dashboard',
     'entity.dashboard.canonical',
-    'layout_builder.dashboards.view',
-    'layout_builder.dashboards_override.view',
+    'layout_builder.dashboard.view',
+    'entity.dashboard.preview',
   ];
 
   if (in_array(\Drupal::routeMatch()->getRouteName(), $routers)) {
@@ -81,6 +85,15 @@ function varbase_dashboards_theme($existing, $type, $theme, $path) {
     }
   }
 
+  $theme = [
+    'varbase_dashboards_admin_list' => [
+      'variables' => [
+        'attributes' => new Attribute(),
+        'list' => [],
+      ],
+    ],
+  ];
+
   return $theme;
 }
 
@@ -105,6 +118,14 @@ function varbase_dashboards_theme_registry_alter(&$info) {
         $info[$layout_id]['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/layouts/claro';
       }
     }
+  }
+
+  if (
+    \Drupal::theme()->getActiveTheme()->getName() == 'gin'
+    || in_array('gin', array_keys(\Drupal::theme()->getActiveTheme()->getBaseThemeExtensions()))
+  ) {
+    $info['varbase_dashboards_admin_list']['theme path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath();
+    $info['varbase_dashboards_admin_list']['path'] = \Drupal::moduleHandler()->getModule("varbase_dashboards")->getPath() . '/templates/gin';
   }
 }
 
@@ -155,4 +176,16 @@ function _back_end_layout_themes() {
   ];
 
   return $back_end_layout_list;
+}
+
+/**
+ * Implements preprocess_admin_list().
+ */
+function varbase_dashboards_preprocess_varbase_dashboards_admin_list(&$variables) {
+  foreach ($variables['list'] as $key => $item) {
+    $variables['list'][$key]['link_attributes'] = new Attribute([
+      'href' => $variables['list'][$key]['url']->toString(),
+      'title' => $variables['list'][$key]['title'],
+    ]);
+  }
 }
