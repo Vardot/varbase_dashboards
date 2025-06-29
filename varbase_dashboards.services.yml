@@ -1,0 +1,10 @@
+services:
+  plugin.manager.varbase_dashboard:
+    class: Drupal\varbase_dashboards\Plugin\VarbaseDashboardManager
+    parent: default_plugin_manager
+  dashboard.cache:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: [dashboard]

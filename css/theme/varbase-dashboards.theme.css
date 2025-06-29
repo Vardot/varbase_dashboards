@@ -1,5 +1,4 @@
-body .block-varbase-dashboard-user .panel__content,
-body .block-varbase-dashboard-user .panel__description {
+body .block-varbase-dashboard-user .content {
   padding: var(--gin-spacing-xxl) var(--gin-spacing-m) var(--gin-spacing-m) var(--gin-spacing-xxl);
 }
 
@@ -35,6 +34,21 @@ body .block-varbase-dashboard-user .name {
 
 body .block-varbase-dashboard-user .action-links {
   text-align: right;
+}
+
+body .block-varbase-dashboard-user .action-links .button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+body .view-varbase-dashboards-content .views-exposed-form {
+  box-shadow: none;
+  border: none;
+  margin-bottom: 0;
+}
+
+body .admin-list--panel {
+  margin: var(--gin-spacing-s);
 }
 
 [dir=rtl] body .block-varbase-dashboard-user .content:before {
@@ -90,5 +104,15 @@ body .block-varbase-dashboard-user .action-links {
 .layouts-dashboards-2 .drow:last-child,
 .layouts-dashboards-3 .drow:last-child {
   padding-right: 0;
+}
+
+.dashboard .layout .block {
+  margin-block-end: 30px;
+  margin-inline-end: 30px;
+}
+
+.toolbar-tray-open:not(.toolbar-vertical) .layout__region.layout-column,
+body:not(.toolbar-tray-open) .layout__region.layout-column {
+  padding: 0;
 }
 

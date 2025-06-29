@@ -4,12 +4,10 @@ type: install
 install:
   - content_moderation
   - layout_builder_restrictions
-  - dashboards
-  - dashboards_views
+  - dashboard
 config:
   import:
-    dashboards: '*'
-    dashboards_views: '*'
+    dashboard: '*'
   actions:
     user.role.authenticated:
       grantPermissions:
@@ -18,7 +16,7 @@ config:
         - 'access varbase dashboards recently created by user'
     user.role.editor:
       grantPermissions:
-        - 'can view dashboard dashboard'
+        - 'view dashboard dashboard'
         - 'access varbase dashboards content'
         - 'access varbase dashboards content in draft'
         - 'access varbase dashboards content in drafts by user'
@@ -28,7 +26,7 @@ config:
         - 'access varbase dashboards recently created by user'
     user.role.seo_admin:
       grantPermissions:
-        - 'can view dashboard dashboard'
+        - 'view dashboard dashboard'
         - 'access varbase dashboards content'
         - 'access varbase dashboards content in draft'
         - 'access varbase dashboards content in drafts by user'
@@ -39,7 +37,7 @@ config:
         - 'access varbase dashboards terms'
     user.role.content_admin:
       grantPermissions:
-        - 'can view dashboard dashboard'
+        - 'view dashboard dashboard'
         - 'access varbase dashboards content'
         - 'access varbase dashboards content in draft'
         - 'access varbase dashboards content in drafts by user'
@@ -51,7 +49,7 @@ config:
         - 'access varbase dashboards comments'
     user.role.site_admin:
       grantPermissions:
-        - 'can view dashboard dashboard'
+        - 'view dashboard dashboard'
         - 'access varbase dashboards content'
         - 'access varbase dashboards content in draft'
         - 'access varbase dashboards content in drafts by user'
@@ -62,4 +60,4 @@ config:
         - 'access varbase dashboards terms'
         - 'access varbase dashboards comments'
         - 'access varbase dashboards users'
-        - 'can override dashboard dashboard'
+        - 'administer dashboard'
