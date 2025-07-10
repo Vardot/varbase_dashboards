@@ -23,10 +23,9 @@ third_party_settings:
           - 'views_block:taxonomy_term-block_1'
           - 'views_block:varbase_dashboards_content-block_all_content'
           - 'views_block:varbase_dashboards_content_in_draft-block_in_draft'
-          - 'views_block:varbase_dashboards_content_in_draft-block_your_drafts'
+          - 'views_block:varbase_dashboards_content_in_draft-block_drafts'
           - 'views_block:varbase_dashboards_recent_changes-block_recent_changes'
           - 'views_block:varbase_dashboards_recent_changes-block_your_activity'
-          - 'views_block:varbase_dashboards_recently_created-block_content_you_created'
           - 'views_block:varbase_dashboards_recently_created-block_recently_created'
           - 'views_block:varbase_dashboards_terms-block_terms'
           - 'views_block:varbase_dashboards_users-block_users'
@@ -61,7 +60,7 @@ layout:
         uuid: 43d3a35c-7156-40fc-861c-bbbf7a41e435
         region: second
         configuration:
-          id: 'views_block:varbase_dashboards_content_in_draft-block_your_drafts'
+          id: 'views_block:varbase_dashboards_content_in_draft-block_drafts'
           label: ''
           label_display: visible
           provider: views
@@ -93,7 +92,7 @@ layout:
           provider: views
           context_mapping: {  }
           views_label: 'All Content'
-          items_per_page: '25'
+          items_per_page: '10'
           pager: view
           fields:
             node_bulk_form:
@@ -161,7 +160,7 @@ layout:
               weight: '0'
             varbase_blog:
               weight: '0'
-            varbase_heroslider_media:
+            varbase_heroslider:
               weight: '0'
         weight: 1
         additional: {  }
@@ -177,17 +176,13 @@ layout:
           varbase_dashboards_types_overview:
             page: page
             varbase_blog: varbase_blog
-            varbase_heroslider_media: varbase_heroslider_media
-            episode: 0
-            landing_page_lb: 0
-            post: 0
+            varbase_heroslider: varbase_heroslider
+            landing_page_lb: landing_page_lb
           varbase_dashboards_comments_overview:
             page: page
             varbase_blog: varbase_blog
-            episode: 0
             landing_page_lb: 0
-            post: 0
-            varbase_heroslider_media: 0
+            varbase_heroslider: 0
           varbase_dashboards_spam_overview: '1'
         weight: 3
         additional: {  }
@@ -202,7 +197,7 @@ layout:
         uuid: a2e8dc25-efb3-4534-ab02-7512ac4d5c26
         region: content
         configuration:
-          id: 'views_block:publishing_content-block_scheduled'
+          id: 'views_block:varbase_dashboards_publishing_content-block_scheduled'
           label: ''
           label_display: visible
           provider: views

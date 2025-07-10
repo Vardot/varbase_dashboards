@@ -9,7 +9,7 @@ dependencies:
     - node
     - smart_date
     - user
-id: publishing_content
+id: varbase_dashboards_publishing_content
 label: 'Publishing content'
 module: views
 description: 'Shows a list of publishing-managed content on the site.'
