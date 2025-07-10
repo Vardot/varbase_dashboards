@@ -111,6 +111,10 @@ body .admin-list--panel {
   margin-inline-end: 30px;
 }
 
+.dashboard .layout .block .gin-layer-wrapper {
+  border-radius: inherit;
+}
+
 .toolbar-tray-open:not(.toolbar-vertical) .layout__region.layout-column,
 body:not(.toolbar-tray-open) .layout__region.layout-column {
   padding: 0;

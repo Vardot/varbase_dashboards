@@ -139,6 +139,10 @@ body {
     & .block {
       margin-block-end: 30px;
       margin-inline-end: 30px;
+
+      .gin-layer-wrapper {
+        border-radius: inherit;
+      }
     }
   }
 }

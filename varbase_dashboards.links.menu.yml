@@ -4,3 +4,7 @@ varbase_dashboards.dashboard:
   menu_name: content
   url: "internal:/admin/dashboard"
   weight: -50
+  options:
+    icon:
+      pack_id: varbase_dashboards
+      icon_id: dashboard

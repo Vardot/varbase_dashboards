@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Template\Attribute;
+use Drupal\varbase_dashboards\PreRender\ToolbarPreRender;
 
 /**
  * Implements hook_element_info_alter().
@@ -22,29 +23,6 @@ function varbase_dashboards_page_attachments(array &$attachments) {
   if (in_array(\Drupal::routeMatch()->getRouteName(), $routers)) {
     // Attach our extra CSS for Varbase dashboard.
     $attachments['#attached']['library'][] = 'varbase_dashboards/style';
-  }
-}
-
-/**
- * Implements hook_toolbar().
- */
-function varbase_dashboards_toolbar_alter(&$items) {
-  if (isset($items['dashboards'])) {
-    unset($items['dashboards']);
-  }
-}
-
-/**
- * Implements hook_element_info_alter().
- */
-function varbase_dashboards_element_info_alter(array &$types) {
-  if (isset($types['toolbar'])) {
-    if (\Drupal::moduleHandler()->moduleExists('navigation')) {
-      $types['toolbar']['#attached']['library'][] = 'varbase_dashboards/admin-navigation';
-    }
-    elseif (\Drupal::moduleHandler()->moduleExists('admin_toolbar')) {
-      $types['toolbar']['#attached']['library'][] = 'varbase_dashboards/admin-toolbar';
-    }
   }
 }
 

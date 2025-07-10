@@ -362,7 +362,7 @@ display:
     display_options:
       display_comment: 'Recent content block for the Welcome dashboard'
       display_extenders: {  }
-      block_category: Varbase Dashboards
+      block_category: 'Varbase Dashboards'
     cache_metadata:
       max-age: -1
       contexts:
