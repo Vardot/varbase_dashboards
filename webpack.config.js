@@ -2,8 +2,12 @@ const path = require('path');
 const isDev = (process.env.NODE_ENV !== 'production');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const postcssSorting = require('postcss-sorting');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+
+const stylelintConfig = require('./.stylelintrc.json');
 
 module.exports = {
   mode: 'production',
@@ -18,51 +22,31 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'css'),
-    pathinfo: true,
+    pathinfo: false,
     publicPath: '',
   },
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        exclude: /sprite\.svg$/,
-        type: 'javascript/auto',
-        use: [{
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]', //?[contenthash]
-              outputPath: '../../'
-            },
-          },
-          {
-            loader: 'img-loader',
-            options: {
-              enabled: !isDev,
-            },
-          },
-        ],
-      },
-      {
         test: /\.(css|scss)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              name: '[name].[ext]?[hash]',
-            }
           },
           {
             loader: 'css-loader',
             options: {
               sourceMap: isDev,
               importLoaders: 2,
-              url: (url) => {
-                // Don't handle sprite svg
-                if (url.includes('sprite.svg')) {
-                  return false;
-                }
+              url: {
+                filter: (url) => {
+                  // Don't handle sprite svg or web-dashboard svg
+                  if (url.includes('sprite.svg') || url.includes('web-dashboard.svg')) {
+                    return false;
+                  }
 
-                return true;
+                  return true;
+                },
               },
             },
           },
@@ -73,15 +57,9 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   autoprefixer(),
-                  ['postcss-perfectionist', {
-                    format: 'expanded',
-                    indentSize: 2,
-                    trimLeadingZero: true,
-                    zeroLengthNoUnit: false,
-                    maxAtRuleLength: false,
-                    maxSelectorLength: false,
-                    maxValueLength: false,
-                  }]
+                  postcssSorting({
+                    'properties-order': stylelintConfig.rules['order/properties-order'],
+                  }),
                 ],
               },
             },
@@ -113,6 +91,11 @@ module.exports = {
       cleanStaleWebpackAssets: false
     }),
     new MiniCssExtractPlugin(),
+    new StylelintPlugin({
+      files: 'css/**/*.css',
+      fix: true,
+      lintDirtyModulesOnly: false,
+    }),
   ],
   watchOptions: {
     aggregateTimeout: 300,
