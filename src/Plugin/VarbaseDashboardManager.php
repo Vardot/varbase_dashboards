@@ -5,8 +5,6 @@ namespace Drupal\varbase_dashboards\Plugin;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
-use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
-use Drupal\varbase_dashboards\Annotation\VarbaseDashboard;
 
 /**
  * Provides the Varbase Dashboard plugin manager.

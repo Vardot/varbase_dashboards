@@ -12,8 +12,6 @@ module.exports = {
     // SCSS
     // ################################################
     // Theme
-    'theme/varbase-dashboards.admin-navigation.theme': ['./scss/theme/varbase-dashboards.admin-navigation.theme.scss'],
-    'theme/varbase-dashboards.admin-toolbar.theme': ['./scss/theme/varbase-dashboards.admin-toolbar.theme.scss'],
     'theme/varbase-dashboards.theme': ['./scss/theme/varbase-dashboards.theme.scss'],
   },
   output: {

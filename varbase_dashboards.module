@@ -6,7 +6,6 @@
  */
 
 use Drupal\Core\Template\Attribute;
-use Drupal\varbase_dashboards\PreRender\ToolbarPreRender;
 
 /**
  * Implements hook_element_info_alter().

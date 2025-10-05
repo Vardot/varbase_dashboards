@@ -207,11 +207,11 @@ class VarbaseContentOverview extends BlockBase implements BlockPluginInterface, 
       '#rows' => $rows,
     ];
 
-    $makup_data = $this->renderer->render($body_data);
+    $markup_data = $this->renderer->render($body_data);
 
     return [
       '#type' => 'markup',
-      '#markup' => $makup_data,
+      '#markup' => $markup_data,
     ];
   }
 
