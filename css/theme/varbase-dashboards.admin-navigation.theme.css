@@ -2,4 +2,3 @@
 .toolbar-button--icon--varbase-dashboards-dashboard::before {
   --icon: url(../../media/sprite.svg#grid-view);
 }
-

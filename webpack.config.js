@@ -18,7 +18,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'css'),
-    pathinfo: true,
+    pathinfo: false,
     publicPath: '',
   },
   module: {
@@ -26,44 +26,24 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         exclude: /sprite\.svg$/,
-        type: 'javascript/auto',
-        use: [{
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]', //?[contenthash]
-              outputPath: '../../'
-            },
-          },
-          {
-            loader: 'img-loader',
-            options: {
-              enabled: !isDev,
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: '../../images/[name][ext]',
+          emit: false,
+        },
       },
       {
         test: /\.(css|scss)$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              name: '[name].[ext]?[hash]',
-            }
           },
           {
             loader: 'css-loader',
             options: {
               sourceMap: isDev,
               importLoaders: 2,
-              url: (url) => {
-                // Don't handle sprite svg
-                if (url.includes('sprite.svg')) {
-                  return false;
-                }
-
-                return true;
-              },
+              url: false,
             },
           },
           {
@@ -73,15 +53,6 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   autoprefixer(),
-                  ['postcss-perfectionist', {
-                    format: 'expanded',
-                    indentSize: 2,
-                    trimLeadingZero: true,
-                    zeroLengthNoUnit: false,
-                    maxAtRuleLength: false,
-                    maxSelectorLength: false,
-                    maxValueLength: false,
-                  }]
                 ],
               },
             },
@@ -112,8 +83,16 @@ module.exports = {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      ignoreOrder: true,
+    }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      '...',
+    ],
+  },
   watchOptions: {
     aggregateTimeout: 300,
     ignored: ['**/*.woff', '**/*.json', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules', 'images'],
