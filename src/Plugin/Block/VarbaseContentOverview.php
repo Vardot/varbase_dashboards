@@ -123,14 +123,17 @@ class VarbaseContentOverview extends BlockBase implements BlockPluginInterface, 
     $types = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
     $config = $this->getConfiguration();
 
+    $types_overview = $config['varbase_dashboards_types_overview'] ?? [];
+    $comments_overview = $config['varbase_dashboards_comments_overview'] ?? [];
+
     $comments_exist = $this->moduleHandler->moduleExists('comment');
     $spam = isset($config['varbase_dashboards_spam_overview']) && $config['varbase_dashboards_spam_overview'] == 1;
 
     foreach ($types as $type => $object) {
       // Compare against type option on pane config.
-      if ((!array_key_exists($type, $config['varbase_dashboards_types_overview']))
-        || (isset($config['varbase_dashboards_types_overview'])
-        && $config['varbase_dashboards_types_overview'][$type]) == $type) {
+      if ((!array_key_exists($type, $types_overview))
+        || (isset($types_overview)
+        && $types_overview[$type]) == $type) {
 
         $type_query = $this->connection->query("SELECT count(*) FROM {node_field_data} WHERE type = :type and status = 1", [
           ':type' => $type,
@@ -142,7 +145,7 @@ class VarbaseContentOverview extends BlockBase implements BlockPluginInterface, 
         // Check if comments module is enabled.
         if ($comments_exist) {
           // Compare against comment options on pane config.
-          if ((!array_key_exists($type, $config['varbase_dashboards_comments_overview'])) || (isset($config['varbase_dashboards_comments_overview']) && $config['varbase_dashboards_comments_overview'][$type]) == $type) {
+          if ((!array_key_exists($type, $comments_overview)) || (isset($comments_overview) && $comments_overview[$type]) == $type) {
 
             $comment_query = $this->connection->query("SELECT count(DISTINCT c.cid) FROM {comment} c INNER JOIN {comment_field_data} n ON c.cid = n.cid INNER JOIN {node} node WHERE n.entity_id = node.nid AND node.type = :type AND n.status = 1", [
               ':type' => $type,
