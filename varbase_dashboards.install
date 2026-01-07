@@ -7,6 +7,7 @@
 
 use Drupal\Core\Recipe\Recipe;
 use Drupal\Core\Recipe\RecipeRunner;
+use Drupal\Component\Uuid\Php as PhpUuid;
 
 /**
  * Implements hook_install().
@@ -15,5 +16,63 @@ function varbase_dashboards_install() {
 
   $default_recipe = Recipe::createFromDirectory(__DIR__ . '/recipes/default');
   RecipeRunner::processRecipe($default_recipe);
+
+}
+
+/**
+ * Add Dashboard Navigation block to the Navigation sidebar.
+ */
+function varbase_dashboards_update_20001() {
+  // Check if the navigation module is enabled.
+  if (\Drupal::moduleHandler()->moduleExists('navigation')
+    && \Drupal::moduleHandler()->moduleExists('dashboard')) {
+
+    // Load the navigation block layout config.
+    $config = \Drupal::configFactory()->getEditable('navigation.block_layout');
+
+    if (!$config->isNew()) {
+      $sections = $config->get('sections');
+
+      if (!empty($sections)) {
+
+        // Check if the navigation_dashboard block already exists.
+        $navigation_dashboard_exists = TRUE;
+        foreach ($sections as $section) {
+          if (!empty($section['components'])) {
+            foreach ($section['components'] as $component) {
+              if (isset($component['configuration']['id']) && $component['configuration']['id'] === 'navigation_dashboard') {
+                $navigation_dashboard_exists = FALSE;
+              }
+            }
+          }
+        }
+
+        if ($navigation_dashboard_exists) {
+          // Generate a UUID for the new component.
+          $uuid_generator = new PhpUuid();
+          $uuid = $uuid_generator->generate();
+
+          // Add the navigation_dashboard block to the content region.
+          $sections[0]['components'][$uuid] = [
+            'uuid' => $uuid,
+            'region' => 'content',
+            'configuration' => [
+              'id' => 'navigation_dashboard',
+              'label' => 'Dashboard',
+              'label_display' => '0',
+              'provider' => 'dashboard',
+            ],
+            'weight' => -100,
+            'additional' => [],
+          ];
+
+          $config->set('sections', $sections);
+          $config->save();
+        }
+
+      }
+    }
+
+  }
 
 }
