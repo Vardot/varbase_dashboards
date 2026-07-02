@@ -12,7 +12,11 @@
     "package-lock.json",
     "yarn.lock",
     "**/.*.json",
-    ".*ignore"
+    ".*ignore",
+    ".yarn/**",
+    "**/*.map",
+    "**/dist/**",
+    "**/build/**"
   ],
   "words": [
     "varbase",
@@ -23,6 +27,7 @@
     "phpcbf",
     "drupal",
     "Drupal",
+    "drush",
     "jsonapi",
     "api",
     "langcode",
@@ -69,6 +74,18 @@
     "addclass",
     "pathinfo",
     "roleassign",
-    "drow"
+    "drow",
+    "cweagans",
+    "oomphinc",
+    "webship",
+    "WEBSHIP",
+    "Olivero",
+    "olivero",
+    "Artefacts",
+    "contentinfo",
+    "noreferrer",
+    "noopener",
+    "infobars",
+    "tabindex"
   ]
 }

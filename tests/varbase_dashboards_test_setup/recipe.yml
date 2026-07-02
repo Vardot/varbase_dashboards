@@ -1,0 +1,6 @@
+name: 'Varbase Dashboards Test Setup'
+description: 'Creates the prerequisites that a full Varbase site provides but the Drupal Standard profile does not: the four Varbase user roles (site_admin, content_admin, editor, seo_admin) that the Varbase Dashboards default recipe grants permissions to, and the varbase_simple_workflow content-moderation workflow that the Varbase Dashboards "content in draft" view depends on. Applied by the automated webship-js browser test before Varbase Dashboards is installed on the Standard profile.'
+type: 'Testing'
+install:
+  - user
+  - content_moderation

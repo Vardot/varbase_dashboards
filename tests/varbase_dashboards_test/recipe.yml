@@ -1,0 +1,5 @@
+name: 'Varbase Dashboards Test'
+description: 'Documentation-only recipe describing the Varbase Dashboards automated-test install. The webship-js CI job does not apply this recipe; it installs the module directly with `drush pm:install varbase_dashboards` (which runs the module hook_install → recipes/default) after applying tests/varbase_dashboards_test_setup, because pm:install has no checkpoint/rollback and is more robust for the automated browser job than `drush recipe`.'
+type: 'Testing'
+install:
+  - varbase_dashboards
