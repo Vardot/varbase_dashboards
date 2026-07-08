@@ -132,7 +132,7 @@ webship-js-test:
     # Discovery dependencies) must be enabled before Dashboard can load.
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT pm:install content_moderation roleassign layout_builder_restrictions -y
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
-    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT recipe $CI_PROJECT_DIR/tests/varbase_dashboards_test_setup -y
+    - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT recipe $CI_PROJECT_DIR/tests/recipes/varbase_dashboards_test_setup -y
     - $CI_PROJECT_DIR/vendor/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
     # Install Varbase Dashboards directly (pm:install, not drush recipe: the core
     # Recipe runner wraps config in a checkpoint transaction and rolls back on
