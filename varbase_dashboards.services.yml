@@ -8,3 +8,5 @@ services:
       - { name: cache.bin }
     factory: cache_factory:get
     arguments: [dashboard]
+  Drupal\varbase_dashboards\Hook\VarbaseDashboardsHooks:
+    autowire: true
