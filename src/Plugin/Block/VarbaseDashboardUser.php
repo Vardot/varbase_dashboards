@@ -9,7 +9,7 @@ use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Routing\RedirectDestinationInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -53,13 +53,6 @@ class VarbaseDashboardUser extends BlockBase implements BlockPluginInterface, Co
   protected $currentUser;
 
   /**
-   * The user storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
-  protected $userStorage;
-
-  /**
    * Creates a VarbaseDashboardUser block instance.
    *
    * @param array $configuration
@@ -74,15 +67,15 @@ class VarbaseDashboardUser extends BlockBase implements BlockPluginInterface, Co
    *   The redirect destination service.
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   AccountProxy current user definition.
-   * @param \Drupal\Core\Entity\EntityStorageInterface $user_storage
-   *   The user storage.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, TranslationInterface $string_translation, RedirectDestinationInterface $redirect_destination, AccountInterface $current_user, EntityStorageInterface $user_storage) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, TranslationInterface $string_translation, RedirectDestinationInterface $redirect_destination, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->stringTranslation = $string_translation;
     $this->redirectDestination = $redirect_destination;
     $this->currentUser = $current_user;
-    $this->userStorage = $user_storage;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -96,7 +89,7 @@ class VarbaseDashboardUser extends BlockBase implements BlockPluginInterface, Co
       $container->get('string_translation'),
       $container->get('redirect.destination'),
       $container->get('current_user'),
-      $container->get('entity_type.manager')->getStorage('user')
+      $container->get('entity_type.manager')
     );
   }
 
@@ -104,7 +97,7 @@ class VarbaseDashboardUser extends BlockBase implements BlockPluginInterface, Co
    * {@inheritdoc}
    */
   public function build() {
-    $user = $this->userStorage->load($this->currentUser->id());
+    $user = $this->entityTypeManager->getStorage('user')->load($this->currentUser->id());
     $destination = $this->redirectDestination->getAsArray();
     $options = [
       $destination,
