@@ -4,8 +4,8 @@
   "private": true,
   "license": "GPL-2.0-or-later",
   "engines": {
-    "yarn": ">= 4.9.3",
-    "node": ">= 20.0"
+    "yarn": ">= 4.18.1",
+    "node": ">= 24.0"
   },
   "scripts": {
     "theme:build": "webpack --progress --config webpack.config.build.js && stylelint \"css/**/*.css\" --fix",
@@ -23,11 +23,11 @@
     "generate-reports": "generate-reports"
   },
   "dependencies": {
-    "@cucumber/cucumber": "10.0.1",
-    "@cucumber/pretty-formatter": "1.0.0",
+    "@cucumber/cucumber": "^10.0.1",
+    "@cucumber/pretty-formatter": "^1.0.0",
     "@vardot/varbase-e2e": "^2.0.7",
-    "playwright": "1.60.0",
-    "tsx": "4.22.1"
+    "playwright": "^1.60.0",
+    "tsx": "^4.22.1"
   },
   "resolutions": {
     "@cucumber/cucumber": "10.0.1",
@@ -44,7 +44,7 @@
   "author": "Vardot",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "~11.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.9.1",
     "cspell": "^8.16.1",
     "css-loader": "^5.2.7",
@@ -58,19 +58,19 @@
     "eslint-plugin-yml": "^1.18.0",
     "expose-loader": "^3.1.0",
     "file-loader": "^5.0.2",
-    "glob": "11.0.0",
+    "glob": "^11.0.0",
     "img-loader": "^4.0.0",
-    "jquery": "~3.7.0",
-    "jquery-form": "4.3.x",
-    "jquery-ui": "1.13.x",
-    "js-cookie": "3.0.x",
+    "jquery": "^3.7.0",
+    "jquery-form": "^4.3.0",
+    "jquery-ui": "^1.13.0",
+    "js-cookie": "^3.0.0",
     "jsdom": "^26.1.0",
-    "loadjs": "4.2.x",
+    "loadjs": "^4.2.0",
     "mini-css-extract-plugin": "^0.11.3",
     "minimist": "^1.2.2",
     "mkdirp": "^1.0.4",
     "nightwatch": "^2.3.9",
-    "normalize.css": "8.0.x",
+    "normalize.css": "^8.0.0",
     "postcss": "^8.4.16",
     "postcss-header": "^3.0.2",
     "postcss-import": "^15.0.0",
@@ -85,8 +85,8 @@
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",
     "sass-resources-loader": "^2.2.4",
-    "shepherd.js": "~10.0.1",
-    "sortablejs": "1.15.x",
+    "shepherd.js": "^10.0.1",
+    "sortablejs": "^1.15.0",
     "stylelint": "^16.14.0",
     "stylelint-checkstyle-formatter": "^0.1.2",
     "stylelint-config-standard": "^36.0.1",
@@ -94,10 +94,10 @@
     "stylelint-prettier": "^5.0.2",
     "svg-inline-loader": "^0.8.2",
     "svg-spritemap-webpack-plugin": "^4.4.0",
-    "tabbable": "~6.0.0",
+    "tabbable": "^6.0.0",
     "terser": "^5.14.2",
     "terser-webpack-plugin": "^5.3.3",
-    "underscore": "~1.13.4",
+    "underscore": "^1.13.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.77.0",
     "webpack-cli": "^5.0.0",
@@ -117,5 +117,5 @@
     "last 1 Samsung version",
     "Firefox ESR"
   ],
-  "packageManager": "yarn@4.9.3"
+  "packageManager": "yarn@4.18.1"
 }
